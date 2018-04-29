@@ -60,3 +60,18 @@ body {
   color: #e1ca96;
   padding: 10px 50px;
 }
+
+.playerStats {
+  font-size: 20px;
+}
+
+#reset {
+  background-color: #434a42;
+  color: #e1ca96;
+  border: 1px solid #e1ca96;
+  padding: 5px 20px;
+}
+
+#reset:hover {
+  background-color: #626c66;
+}
