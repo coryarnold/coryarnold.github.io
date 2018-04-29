@@ -21,7 +21,42 @@ body {
   border: 1px solid #aca885;
 }
 
-#rules #description {
-  margin: 0 5px;
-  overflow-y: auto;
+.actionDiv {
+  margin: 5px 10px;
+}
+
+#rules .actionDiv h4 {
+  padding: 0;
+  margin: 0;
+}
+
+#gameSpace {
+  margin: 50px 100px;
+  padding: 10px 0;
+  text-align: center;
+}
+
+#gameSpace .numberDiv {
+  display: inline;
+  margin: 5px;
+  padding: 20px;
+  background-color: #4281a4;
+  border: 1px solid black;
+}
+
+.numberDiv span {
+  font-size: 24px;
+  text-align: center;
+}
+
+#gameSpace #numberDisplay {
+  margin-top: 40px;
+  font-size: 32px;
+}
+
+#gameSpace button {
+  background-color: #626c66;
+  border: 2px solid #aca885;
+  color: #e1ca96;
+  padding: 10px 50px;
 }

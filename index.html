@@ -11,9 +11,49 @@
     <p id="author">By: Cory Arnold</p>
 
     <section id="rules">
-      <div id="description">
-        <p>Lorem ipsum dolor sit amet, cu eum rebum noluisse similique. Nobis luptatum abhorreant has id, pro in dico maiestatis, no mea veniam feugiat ocurreret. Eos ad recteque dissentiunt. Rebum altera dicunt et sea, per ad elitr dicunt debitis.</p>
+      <div class="actionDiv">
+        <h4>Rules:</h4>
+        <p>The player is to click on a number 1-7 and click 'start.'
+          <br>
+          Click stop and the number will be diplayed.
+          <br>
+          If the number is that number, they get their bet times 6 back.
+          <br>
+          If it is any other number, then the player loses their bet.
+        </p>
       </div>
     </section>
+
+    <section id="gameSpace">
+      <div class="actionDiv">
+        <div class="numberDiv" id="1" onclick="player.stopRoll()">
+          <span>1</span>
+        </div>
+        <div class="numberDiv" id="2">
+          <span>2</span>
+        </div>
+        <div class="numberDiv" id="3">
+          <span>3</span>
+        </div>
+        <div class="numberDiv" id="4">
+          <span>4</span>
+        </div>
+        <div class="numberDiv" id="5">
+          <span>5</span>
+        </div>
+        <div class="numberDiv" id="6">
+          <span>6</span>
+        </div>
+        <div class="numberDiv" id="7">
+          <span>7</span>
+        </div>
+      </div>
+      <p id="numberDisplay">Click start after choosing a number!</p>
+      <button id="start" onclick="player.roll()">Start</button>
+      <button id="stop" onclick="player.stopRoll()">Stop</button>
+
+    </section>
+
+    <script type="text/javascript" src="index.js"></script>
   </body>
 </html>
