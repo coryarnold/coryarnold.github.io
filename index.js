@@ -36,6 +36,8 @@ class Player {
       if (this.betPlace === 0) { //if the player hasn't chosen a number yet
         alert('Please choose a number first.');
       } else {
+        document.getElementById('start').setAttribute('onClick', 'javascript: player.stopRoll();');
+        document.getElementById('start').innerHTML = "Stop";
         this.money -= this.bet;
         this.update();
         this.numberRoller = setInterval(() => { //generates a number every 50 milliseconds
@@ -66,8 +68,6 @@ class Player {
     if (this.betPlace === this.randomNumber) { //if correct guess
       console.log('you win!');
       this.money += this.bet * 6; //bet * 6
-    } else {
-      console.log('you lose.');
     }
     this.update(); //update display
   }
