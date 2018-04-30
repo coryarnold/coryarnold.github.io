@@ -37,7 +37,10 @@ class Player {
     if (!this.rolling) { //if not rolling (prevents bug where it can't be stopped)
       if (this.betPlace === 0) { //if the player hasn't chosen a number yet
         alert('Please choose a number first.');
-      } else {
+      } else if (this.money < this.bet) {
+        alert('You do not have enough money.');
+      }
+      else {
         button.setAttribute('onClick', 'javascript: player.stopRoll();');
         button.innerHTML = "Stop";
         this.money -= this.bet;
