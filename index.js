@@ -1,3 +1,5 @@
+var button = document.getElementById('start');
+
 class Player {
   constructor() {
     this.money = parseInt(localStorage.getItem('money')) || 100; //fetch money from storage or default to 100
@@ -36,8 +38,8 @@ class Player {
       if (this.betPlace === 0) { //if the player hasn't chosen a number yet
         alert('Please choose a number first.');
       } else {
-        document.getElementById('start').setAttribute('onClick', 'javascript: player.stopRoll();');
-        document.getElementById('start').innerHTML = "Stop";
+        button.setAttribute('onClick', 'javascript: player.stopRoll();');
+        button.innerHTML = "Stop";
         this.money -= this.bet;
         this.update();
         this.numberRoller = setInterval(() => { //generates a number every 50 milliseconds
@@ -51,6 +53,8 @@ class Player {
   stopRoll() { //stops the interval from continuing
     clearInterval(this.numberRoller);
     this.rolling = false; //no longer rolling
+    button.innerHTML = 'Start';
+    button.setAttribute('onClick', 'javascript: player.roll();');
     this.checkRoll();
   }
 
