@@ -1,77 +1,77 @@
 class Player {
   constructor() {
-    this.money = parseInt(localStorage.getItem('money')) || 100;
+    this.money = parseInt(localStorage.getItem('money')) || 100; //fetch money from storage or default to 100
     this.bet = 10;
-    this.chosenNumber = 0;
-    this.randomNumber;
-    this.numberRoller;
-    this.betPlace = 0;
-    this.rolling = false;
+    this.randomNumber; //random number given by computer
+    this.numberRoller; //interval that runs the number roll
+    this.betPlace = 0; //chosen number by player
+    this.rolling = false; //number isn't rolling
   }
 
-  reset() {
+  reset() { //reset all stats
     if (confirm('Are you sure?')) {
-      localStorage.clear();
-      window.location.reload(false);
+      localStorage.clear(); //clear all data
+      window.location.reload(false); //reload window
     }
   }
 
-  update() {
+  update() { //update display and storage
     document.getElementById('money').innerHTML = this.money;
     document.getElementById('bet').innerHTML = this.bet;
-    localStorage.setItem('money', this.money);
+    localStorage.setItem('money', this.money); //save money to local storage
   }
 
-  changeBet(amount) {
-    if (!this.rolling) {
-      if (this.bet >= 10 && amount > 0 && this.bet < 1000) {
+  changeBet(amount) { //change bet amount
+    if (!this.rolling) { //if not rolling
+      if (this.bet >= 10 && amount > 0 && this.bet < 1000) { //minimum 10 max 1000
         this.bet += amount;
-      } else if (this.bet > 10 && amount < 0 && this.bet <= 1000) {
+      } else if (this.bet > 10 && amount < 0 && this.bet <= 1000) { //minimum 10 max 1000
         this.bet -= amount;
       }
     }
   }
 
-  roll() {
-    if (!this.rolling) {
-      if (this.betPlace === 0) {
+  roll() { //generate number
+    if (!this.rolling) { //if not rolling (prevents bug where it can't be stopped)
+      if (this.betPlace === 0) { //if the player hasn't chosen a number yet
         alert('Please choose a number first.');
       } else {
-        this.numberRoller = setInterval(() => {
-          this.rolling = true;
+        this.money -= this.bet;
+        this.update();
+        this.numberRoller = setInterval(() => { //generates a number every 50 milliseconds
+          this.rolling = true; //currently rolling
           this.randomNumber = Math.floor(Math.random() * 7 + 1);
           document.getElementById('numberDisplay').innerHTML = this.randomNumber;
         }, 50);
       }
     }
   }
-  stopRoll() {
+  stopRoll() { //stops the interval from continuing
     clearInterval(this.numberRoller);
-    this.rolling = false;
+    this.rolling = false; //no longer rolling
     this.checkRoll();
   }
 
-  setBetPlace(place) {
-    if (!this.rolling) {
-      if (this.betPlace !== 0) {
+  setBetPlace(place) { //choose where to bet
+    if (!this.rolling) { //if not rolling
+      if (this.betPlace !== 0) { //if not players first choice
         document.getElementById(this.betPlace).style.backgroundColor = '#4281a4';
       }
       document.getElementById(place).style.backgroundColor = '#4f517d';
-      this.betPlace = place;
+      this.betPlace = place; //sets bet place
     }
   }
 
-  checkRoll() {
-    if (this.betPlace === this.randomNumber) {
+  checkRoll() { //checks roll
+    if (this.betPlace === this.randomNumber) { //if correct guess
       console.log('you win!');
-      this.money += this.bet * 6;
+      this.money += this.bet * 6; //bet * 6
     } else {
-      this.money -= this.bet;
       console.log('you lose.');
     }
-    this.update();
+    this.update(); //update display
   }
 }
 
-var player = new Player();
-player.update();
+var player = new Player(); //initiates Player class under name "player"
+player.update(); //update display on page load
