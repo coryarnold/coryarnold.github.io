@@ -9,6 +9,11 @@ body {
   width: 100%;
 }
 
+a {
+  text-decoration: none;
+  color: blue;
+}
+
 #title, #author {
   text-align: center;
   margin-bottom: 0;
