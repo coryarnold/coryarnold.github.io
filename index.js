@@ -75,6 +75,8 @@ class Player {
     if (this.betPlace === this.randomNumber) { //if correct guess
       console.log('you win!');
       this.money += this.bet * 6; //bet * 6
+    } else if (this.betPlace != this.randomNumber && this.money === 0) {
+      button.innerHTML = 'Busted!';
     }
     this.update(); //update display
   }
